@@ -1,0 +1,19 @@
+{
+  "name": "AutoTrack 360° - Historia Clínica Vehicular",
+  "short_name": "AutoTrack",
+  "description": "Plataforma de historial vehicular verificable",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["automotive", "business", "utilities"]
+}
