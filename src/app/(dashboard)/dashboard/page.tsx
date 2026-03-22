@@ -35,7 +35,7 @@ export default async function DashboardPage() {
     .from('profiles')
     .select('role')
     .eq('id', user.id)
-    .single()
+    .single() as { data: { role: string } | null }
 
   const isTaller = profile?.role === 'taller'
 
