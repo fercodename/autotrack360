@@ -152,13 +152,13 @@ export default function NuevoVehiculoPage() {
             />
 
             <Input
-              label="VIN (opcional)"
+              label="Chasis Nro (opcional)"
               name="vin"
               value={formData.vin}
               onChange={handleChange}
               placeholder="17 caracteres"
               maxLength={17}
-              helperText="Número de identificación del vehículo"
+              helperText="Número de chasis del vehículo"
             />
 
             <div className="grid grid-cols-2 gap-4">

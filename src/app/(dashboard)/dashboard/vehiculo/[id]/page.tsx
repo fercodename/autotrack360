@@ -139,7 +139,7 @@ export default async function VehiculoDetailPage({ params }: Props) {
                   <Hash className="h-5 w-5 text-slate-400" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-400">VIN</p>
+                  <p className="text-sm text-slate-400">Chasis Nro</p>
                   <p className="font-semibold font-mono text-sm text-white">{vehiculo.vin}</p>
                 </div>
               </div>
