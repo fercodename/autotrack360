@@ -54,25 +54,24 @@ export default async function VehiculoDetailPage({ params }: Props) {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex items-start gap-4">
-          <Link 
-            href="/dashboard" 
-            className="mt-1 p-2 hover:bg-surface-light rounded-lg transition-colors"
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+        <div className="flex items-start gap-3">
+          <Link
+            href="/dashboard"
+            className="mt-1 p-2 hover:bg-surface-light rounded-lg transition-colors flex-shrink-0"
           >
             <ArrowLeft className="h-5 w-5 text-slate-400" />
           </Link>
-          <div>
-            <div className="flex items-center gap-3">
-              <PatentePlate patente={vehiculo.patente} size="lg" />
-            </div>
-            <p className="text-slate-400 mt-1">
+          <div className="min-w-0">
+            <PatentePlate patente={vehiculo.patente} size="md" className="sm:hidden" />
+            <PatentePlate patente={vehiculo.patente} size="lg" className="hidden sm:inline-flex" />
+            <p className="text-slate-400 mt-1 text-sm sm:text-base truncate">
               {vehiculo.marca} {vehiculo.modelo} ({vehiculo.anio})
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
-          <TrustScoreBadge score={vehiculo.trust_score} size="md" />
+        <div className="flex items-center gap-2 ml-11 sm:ml-0 flex-shrink-0">
+          <TrustScoreBadge score={vehiculo.trust_score} size="sm" showLabel={false} />
           <RecalculateButton vehiculoId={id} />
         </div>
       </div>
@@ -88,7 +87,7 @@ export default async function VehiculoDetailPage({ params }: Props) {
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-surface-light flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-surface-light flex items-center justify-center flex-shrink-0">
                 <Gauge className="h-5 w-5 text-slate-400" />
               </div>
               <div>
@@ -100,7 +99,7 @@ export default async function VehiculoDetailPage({ params }: Props) {
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-surface-light flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-surface-light flex items-center justify-center flex-shrink-0">
                 <Calendar className="h-5 w-5 text-slate-400" />
               </div>
               <div>
@@ -111,7 +110,7 @@ export default async function VehiculoDetailPage({ params }: Props) {
 
             {vehiculo.tipo_combustible && (
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-surface-light flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-surface-light flex items-center justify-center flex-shrink-0">
                   <Fuel className="h-5 w-5 text-slate-400" />
                 </div>
                 <div>
@@ -123,7 +122,7 @@ export default async function VehiculoDetailPage({ params }: Props) {
 
             {vehiculo.color && (
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-surface-light flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-surface-light flex items-center justify-center flex-shrink-0">
                   <Palette className="h-5 w-5 text-slate-400" />
                 </div>
                 <div>
@@ -135,7 +134,7 @@ export default async function VehiculoDetailPage({ params }: Props) {
 
             {vehiculo.vin && (
               <div className="flex items-center gap-3 col-span-2">
-                <div className="w-10 h-10 rounded-xl bg-surface-light flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-surface-light flex items-center justify-center flex-shrink-0">
                   <Hash className="h-5 w-5 text-slate-400" />
                 </div>
                 <div>

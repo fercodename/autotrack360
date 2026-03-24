@@ -15,22 +15,22 @@ export function TrustScoreBadge({ score, size = 'md', showLabel = true }: TrustS
   
   const sizes = {
     sm: {
-      container: 'w-14 h-14',
-      text: 'text-lg',
+      container: 'w-12 h-12',
+      text: 'text-base',
       icon: 'h-3 w-3',
       labelText: 'text-xs',
     },
     md: {
-      container: 'w-20 h-20',
-      text: 'text-2xl',
-      icon: 'h-4 w-4',
-      labelText: 'text-sm',
+      container: 'w-16 h-16 sm:w-20 sm:h-20',
+      text: 'text-xl sm:text-2xl',
+      icon: 'h-3.5 w-3.5 sm:h-4 sm:w-4',
+      labelText: 'text-xs sm:text-sm',
     },
     lg: {
-      container: 'w-28 h-28',
-      text: 'text-4xl',
-      icon: 'h-5 w-5',
-      labelText: 'text-base',
+      container: 'w-20 h-20 sm:w-28 sm:h-28',
+      text: 'text-2xl sm:text-4xl',
+      icon: 'h-4 w-4 sm:h-5 sm:w-5',
+      labelText: 'text-sm sm:text-base',
     },
   }
 

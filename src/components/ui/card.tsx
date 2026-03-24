@@ -8,7 +8,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     <div
       ref={ref}
       className={cn(
-        'card-premium',
+        'card-premium overflow-hidden',
         className
       )}
       {...props}
@@ -21,7 +21,7 @@ const CardHeader = forwardRef<HTMLDivElement, CardProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn('px-6 py-4 border-b border-slate-700/50', className)}
+      className={cn('px-4 sm:px-6 py-4 border-b border-slate-700/50', className)}
       {...props}
     />
   )
@@ -54,7 +54,7 @@ const CardContent = forwardRef<HTMLDivElement, CardProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn('px-6 py-4', className)}
+      className={cn('px-4 sm:px-6 py-4', className)}
       {...props}
     />
   )
@@ -65,7 +65,7 @@ const CardFooter = forwardRef<HTMLDivElement, CardProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn('px-6 py-4 border-t border-slate-700/50', className)}
+      className={cn('px-4 sm:px-6 py-4 border-t border-slate-700/50', className)}
       {...props}
     />
   )

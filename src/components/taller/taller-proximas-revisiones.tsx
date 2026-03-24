@@ -147,16 +147,16 @@ export function TallerProximasRevisiones({ revisiones }: TallerProximasRevisione
                       <UrgenciaIcon className="h-5 w-5" />
                     </div>
                     <div className="min-w-0">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <PatentePlate patente={rev.patente} size="sm" />
                         {rev.contactName && (
-                          <span className="text-xs text-slate-400 truncate">
+                          <span className="text-xs text-slate-400 truncate max-w-[8rem]">
                             {rev.contactName}
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-2 mt-0.5">
-                        <p className="text-xs text-slate-500">
+                      <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                        <p className="text-xs text-slate-500 truncate">
                           {tipoConfig?.label || rev.tipo}
                           {fechaFormatted && ` — ${fechaFormatted}`}
                         </p>

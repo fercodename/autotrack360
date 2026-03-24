@@ -36,7 +36,7 @@ export default function HomePage() {
         {/* Hero */}
         <section className="container mx-auto px-4 py-20 md:py-32">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
               La Historia Clínica
               <span className="block text-gradient">Vehicular</span>
             </h1>
@@ -58,18 +58,18 @@ export default function HomePage() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 mt-16 pt-16 border-t border-slate-800">
+            <div className="grid grid-cols-3 gap-4 sm:gap-8 mt-12 sm:mt-16 pt-12 sm:pt-16 border-t border-slate-800">
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-accent mb-2">SHA-256</div>
-                <div className="text-sm text-slate-400">Hash verificable</div>
+                <div className="text-xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 sm:mb-2">SHA-256</div>
+                <div className="text-xs sm:text-sm text-slate-400">Hash verificable</div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">0-100</div>
-                <div className="text-sm text-slate-400">Trust Score</div>
+                <div className="text-xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">0-100</div>
+                <div className="text-xs sm:text-sm text-slate-400">Trust Score</div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">QR</div>
-                <div className="text-sm text-slate-400">Compartir seguro</div>
+                <div className="text-xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">QR</div>
+                <div className="text-xs sm:text-sm text-slate-400">Compartir seguro</div>
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function HomePage() {
               <ArrowRight className="h-8 w-8 text-accent/40" />
             </div>
 
-            <div className="card-premium-hover p-8 text-center">
+            <div className="card-premium-hover p-5 sm:p-8 text-center">
               <div className="w-16 h-16 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mx-auto mb-6">
                 <Car className="h-8 w-8 text-accent" />
               </div>
@@ -106,7 +106,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="card-premium-hover p-8 text-center">
+            <div className="card-premium-hover p-5 sm:p-8 text-center">
               <div className="w-16 h-16 rounded-2xl bg-trust-high/10 border border-trust-high/20 flex items-center justify-center mx-auto mb-6">
                 <Wrench className="h-8 w-8 text-trust-high" />
               </div>
@@ -117,7 +117,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="card-premium-hover p-8 text-center">
+            <div className="card-premium-hover p-5 sm:p-8 text-center">
               <div className="w-16 h-16 rounded-2xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center mx-auto mb-6">
                 <Search className="h-8 w-8 text-primary-400" />
               </div>
@@ -146,7 +146,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="card-premium-hover p-8">
+            <div className="card-premium-hover p-5 sm:p-8">
               <div className="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-6">
                 <FileCheck className="h-7 w-7 text-accent" />
               </div>
@@ -156,7 +156,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="card-premium-hover p-8">
+            <div className="card-premium-hover p-5 sm:p-8">
               <div className="w-14 h-14 rounded-2xl bg-trust-high/10 border border-trust-high/20 flex items-center justify-center mb-6">
                 <Shield className="h-7 w-7 text-trust-high" />
               </div>
@@ -166,7 +166,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="card-premium-hover p-8">
+            <div className="card-premium-hover p-5 sm:p-8">
               <div className="w-14 h-14 rounded-2xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center mb-6">
                 <QrCode className="h-7 w-7 text-primary-400" />
               </div>
@@ -201,7 +201,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="card-premium-hover p-8">
+            <div className="card-premium-hover p-5 sm:p-8">
               <div className="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-6">
                 <Car className="h-7 w-7 text-accent" />
               </div>
@@ -211,7 +211,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="card-premium-hover p-8">
+            <div className="card-premium-hover p-5 sm:p-8">
               <div className="w-14 h-14 rounded-2xl bg-trust-high/10 border border-trust-high/20 flex items-center justify-center mb-6">
                 <ClipboardList className="h-7 w-7 text-trust-high" />
               </div>
@@ -221,7 +221,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="card-premium-hover p-8">
+            <div className="card-premium-hover p-5 sm:p-8">
               <div className="w-14 h-14 rounded-2xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center mb-6">
                 <Users className="h-7 w-7 text-primary-400" />
               </div>
@@ -242,7 +242,7 @@ export default function HomePage() {
 
         {/* Trust Levels */}
         <section className="container mx-auto px-4 py-20">
-          <div className="card-premium p-8 md:p-12">
+          <div className="card-premium p-5 sm:p-8 md:p-12">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Niveles de Verificación

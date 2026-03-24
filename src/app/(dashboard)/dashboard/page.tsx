@@ -75,26 +75,24 @@ export default async function DashboardPage() {
           {vehiculos.map((vehiculo) => (
             <Link key={vehiculo.id} href={`/dashboard/vehiculo/${vehiculo.id}`}>
               <Card className="card-premium-hover cursor-pointer">
-                <CardContent className="py-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-accent/20 to-primary-600/20 border border-accent/20 flex items-center justify-center flex-shrink-0">
-                      <Car className="h-6 w-6 text-accent" />
+                <CardContent className="py-3 sm:py-4">
+                  <div className="flex items-center gap-2.5 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-accent/20 to-primary-600/20 border border-accent/20 flex items-center justify-center flex-shrink-0">
+                      <Car className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <PatentePlate patente={vehiculo.patente} size="sm" />
-                      </div>
-                      <p className="text-slate-300 truncate mt-1">
+                      <PatentePlate patente={vehiculo.patente} size="sm" />
+                      <p className="text-slate-300 truncate mt-1 text-sm sm:text-base">
                         {vehiculo.marca} {vehiculo.modelo} ({vehiculo.anio})
                       </p>
-                      <p className="text-sm text-slate-400 flex items-center gap-1">
+                      <p className="text-xs sm:text-sm text-slate-400 flex items-center gap-1">
                         <Gauge className="h-3 w-3" />
                         {vehiculo.kilometraje_actual?.toLocaleString('es-AR')} km
                       </p>
                     </div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
                       <TrustScoreBadge score={vehiculo.trust_score} size="sm" showLabel={false} />
-                      <ChevronRight className="h-5 w-5 text-slate-600" />
+                      <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 text-slate-600" />
                     </div>
                   </div>
                 </CardContent>

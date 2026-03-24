@@ -91,11 +91,11 @@ export default async function TallerEventoDetailPage({ params }: Props) {
 
       <Card className="mb-6">
         <CardContent className="py-6">
-          <div className="flex items-start gap-4">
-            <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${colorClass}`}>
-              <Icon className="h-7 w-7" />
+          <div className="flex items-start gap-3 sm:gap-4">
+            <div className={`w-10 h-10 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center flex-shrink-0 ${colorClass}`}>
+              <Icon className="h-5 w-5 sm:h-7 sm:w-7" />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-sm text-slate-400">{eventLabel}</span>
                 <span className={`text-xs px-2 py-0.5 rounded-full font-medium text-white ${verificationInfo.bgColor}`}>
@@ -117,9 +117,9 @@ export default async function TallerEventoDetailPage({ params }: Props) {
           <CardTitle>Detalles del Evento</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-surface-light rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-surface-light rounded-lg flex items-center justify-center flex-shrink-0">
                 <Calendar className="h-5 w-5 text-slate-400" />
               </div>
               <div>

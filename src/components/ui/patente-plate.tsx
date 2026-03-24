@@ -30,33 +30,29 @@ export function PatentePlate({
   className?: string
   size?: 'sm' | 'md' | 'lg'
 }) {
-  const minWidth = { sm: 'min-w-[7rem]', md: 'min-w-[8.5rem]', lg: 'min-w-[10rem]' }
-  const bandHeight = { sm: 'h-3', md: 'h-4', lg: 'h-5' }
-  const bandTextSize = { sm: 'text-[0.45rem]', md: 'text-[0.4rem]', lg: 'text-[0.45rem]' }
-  const bandLabel = { sm: 'Rep. Argentina', md: 'REPUBLICA ARGENTINA', lg: 'REPUBLICA ARGENTINA' }
-  const whiteMinHeight = { sm: 'min-h-[1.75rem]', md: 'min-h-[2.25rem]', lg: 'min-h-[2.75rem]' }
-  const patenteFontSize = { sm: 'text-[1.1rem]', md: 'text-[1.5rem]', lg: 'text-[1.85rem]' }
+  const bandHeight = { sm: 'h-3', md: 'h-3.5', lg: 'h-4' }
+  const bandTextSize = { sm: 'text-[0.4rem]', md: 'text-[0.4rem]', lg: 'text-[0.45rem]' }
+  const bandLabel = { sm: 'REP. ARGENTINA', md: 'REPUBLICA ARGENTINA', lg: 'REPUBLICA ARGENTINA' }
+  const whiteMinHeight = { sm: 'min-h-[1.5rem]', md: 'min-h-[1.75rem]', lg: 'min-h-[2.25rem]' }
+  const patenteFontSize = { sm: 'text-[0.85rem]', md: 'text-[1.1rem]', lg: 'text-[1.4rem]' }
+  const containerWidth = { sm: 'w-[5.5rem]', md: 'w-[7rem]', lg: 'w-[8.5rem]' }
 
   return (
     <div
-      className={`inline-flex flex-col rounded-md overflow-hidden shadow-md ${minWidth[size]} ${className}`}
+      className={`inline-flex flex-col rounded-md overflow-hidden shadow-md flex-shrink-0 ${containerWidth[size]} ${className}`}
       style={{ fontFamily: 'var(--font-mono), monospace' }}
     >
-      {/* Borde exterior gris (marco tipo relieve) */}
-      <div className="rounded-md p-[3px] bg-neutral-400">
-        {/* Borde interior negro */}
-        <div className="rounded-[4px] border-2 border-black overflow-hidden">
-          {/* Franja azul - REPUBLICA ARGENTINA */}
+      <div className="rounded-md p-[2px] bg-neutral-400">
+        <div className="rounded-[3px] border border-black overflow-hidden">
           <div
             className={`${bandHeight[size]} flex items-center justify-center flex-shrink-0 ${bandTextSize[size]} font-bold text-white tracking-wider uppercase`}
             style={{ backgroundColor: '#1e40af' }}
           >
             {bandLabel[size]}
           </div>
-          {/* Área blanca: altura mínima fija, letras grandes que ocupan la mayor parte */}
           <div
-            className={`bg-white flex items-center justify-center font-black text-black uppercase leading-none py-0.5 px-1.5 ${whiteMinHeight[size]} ${patenteFontSize[size]}`}
-            style={{ letterSpacing: '0.06em' }}
+            className={`bg-white flex items-center justify-center font-black text-black uppercase leading-none py-0.5 px-1 ${whiteMinHeight[size]} ${patenteFontSize[size]}`}
+            style={{ letterSpacing: '0.04em' }}
           >
             {formatPatenteDisplay(patente)}
           </div>
