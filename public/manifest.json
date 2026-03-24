@@ -4,10 +4,16 @@
   "description": "Plataforma de historial vehicular verificable",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "background_color": "#0b1120",
+  "theme_color": "#f59e0b",
   "orientation": "portrait-primary",
   "icons": [
+    {
+      "src": "/logo-isologo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "/icons/icon.svg",
       "sizes": "any",

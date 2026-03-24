@@ -1,7 +1,8 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
-import { Gauge, Home, Plus, Settings, KeyRound, Building2, UserCircle } from 'lucide-react'
+import { Home, Plus, Settings, KeyRound, Building2, UserCircle } from 'lucide-react'
 import { LogoutButton } from '@/components/layout/logout-button'
 
 export default async function DashboardLayout({
@@ -44,9 +45,7 @@ export default async function DashboardLayout({
       <header className="border-b border-slate-800/50 backdrop-blur-sm bg-surface-dark/80 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <Link href="/dashboard" className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-accent to-primary-600 flex items-center justify-center shadow-lg shadow-accent/20">
-              <Gauge className="h-4 w-4 text-white" />
-            </div>
+            <Image src="/logo-isologo.png" alt="AutoTrack 360°" width={36} height={36} className="rounded-xl shadow-lg shadow-accent/20" />
             <span className="text-lg font-bold text-white hidden sm:block">AutoTrack <span className="text-accent">360°</span></span>
           </Link>
           

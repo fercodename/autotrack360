@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Shield, FileCheck, QrCode, Car, Gauge, ChevronRight, CheckCircle, Wrench, ClipboardList, Search, Users, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import { Shield, FileCheck, QrCode, Car, ChevronRight, CheckCircle, Wrench, ClipboardList, Search, Users, ArrowRight } from 'lucide-react'
 
 export default function HomePage() {
   return (
@@ -8,10 +9,8 @@ export default function HomePage() {
       <header className="border-b border-slate-800/50 backdrop-blur-sm bg-surface-dark/80 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-primary-600 flex items-center justify-center shadow-lg shadow-accent/20">
-                <Gauge className="h-5 w-5 text-white" />
-              </div>
+            <div className="flex items-center gap-2">
+              <Image src="/logo-isologo.png" alt="AutoTrack 360°" width={36} height={36} className="rounded-lg" />
               <span className="text-xl font-bold text-white">AutoTrack <span className="text-accent">360°</span></span>
             </div>
             <div className="flex items-center gap-4">
@@ -313,10 +312,8 @@ export default function HomePage() {
       <footer className="border-t border-slate-800 mt-20">
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-primary-600 flex items-center justify-center">
-                <Gauge className="h-4 w-4 text-white" />
-              </div>
+            <div className="flex items-center gap-2">
+              <Image src="/logo-isologo.png" alt="AutoTrack 360°" width={28} height={28} className="rounded-md" />
               <span className="font-bold text-white">AutoTrack <span className="text-accent">360°</span></span>
             </div>
             <p className="text-slate-400 text-sm">

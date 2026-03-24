@@ -9,10 +9,14 @@ export const metadata: Metadata = {
   title: 'AutoTrack 360° - Historia Clínica Vehicular',
   description: 'Plataforma de historial vehicular verificable. Reducí la asimetría de información en el mercado de usados.',
   manifest: '/manifest.json',
+  icons: {
+    icon: '/logo-isologo.png',
+    apple: '/logo-isologo.png',
+  },
 }
 
 export const viewport: Viewport = {
-  themeColor: '#2563eb',
+  themeColor: '#f59e0b',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Gauge, Wrench } from 'lucide-react'
+import Image from 'next/image'
 
 type AuthVariant = 'propietario' | 'taller'
 
@@ -13,15 +13,12 @@ export function AuthPageLayout({ children, variant }: AuthPageLayoutProps) {
   const homeHref = isTaller ? '/talleres' : '/'
   const otherLabel = isTaller ? 'Soy propietario' : 'Soy taller'
   const otherHref = isTaller ? '/' : '/talleres'
-  const Icon = isTaller ? Wrench : Gauge
 
   return (
     <div className="min-h-screen bg-gradient-dark flex flex-col">
       <header className="p-6 flex items-center justify-between">
-        <Link href={homeHref} className="flex items-center gap-3 w-fit">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-primary-600 flex items-center justify-center shadow-lg shadow-accent/20">
-            <Icon className="h-5 w-5 text-white" />
-          </div>
+        <Link href={homeHref} className="flex items-center gap-2 w-fit">
+          <Image src="/logo-isologo.png" alt="AutoTrack 360°" width={36} height={36} className="rounded-xl shadow-lg shadow-accent/20" />
           <span className="text-xl font-bold text-white">AutoTrack <span className="text-accent">360°</span></span>
         </Link>
         <Link href={otherHref} className="text-sm text-slate-400 hover:text-white transition-colors">
