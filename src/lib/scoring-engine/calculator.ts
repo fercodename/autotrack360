@@ -20,6 +20,7 @@ export interface TrustScoreBreakdown {
     totalEventos: number
     eventosRecientes: number
     eventosNivelA: number
+    eventosNivelO: number
     eventosNivelB: number
     eventosNivelC: number
     kilometrajeConsistente: boolean
@@ -42,6 +43,7 @@ export function calculateTrustScore(
         totalEventos: 0,
         eventosRecientes: 0,
         eventosNivelA: 0,
+        eventosNivelO: 0,
         eventosNivelB: 0,
         eventosNivelC: 0,
         kilometrajeConsistente: true,
@@ -65,6 +67,7 @@ export function calculateTrustScore(
 
   // Contar eventos por nivel
   const eventosNivelA = eventos.filter(e => e.verification_level === 'A').length
+  const eventosNivelO = eventos.filter(e => e.verification_level === 'O').length
   const eventosNivelB = eventos.filter(e => e.verification_level === 'B').length
   const eventosNivelC = eventos.filter(e => e.verification_level === 'C').length
 
@@ -85,6 +88,7 @@ export function calculateTrustScore(
       totalEventos: eventos.length,
       eventosRecientes,
       eventosNivelA,
+      eventosNivelO,
       eventosNivelB,
       eventosNivelC,
       kilometrajeConsistente: consistenciaScore >= 80,

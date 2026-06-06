@@ -8,6 +8,7 @@ import { TrustScoreBadge } from '@/components/scoring/trust-score-badge'
 import { RecalculateButton } from '@/components/scoring/recalculate-button'
 import { EventosList } from '@/components/events/eventos-list'
 import { PendingEventsApproval } from '@/components/events/pending-events-approval'
+import { VTVStatusCard } from '@/components/vtv/vtv-status-card'
 
 interface Props {
   params: Promise<{ id: string }>
@@ -44,6 +45,13 @@ export default async function VehiculoDetailPage({ params }: Props) {
   const eventosPendientes = (todosEventos || []).filter(
     e => e.approval_status === 'pendiente_aprobacion'
   )
+
+  // Obleas de VTVs ya en el historial (para dedup en el card)
+  // El título del evento tiene el formato: "VTV APROBADO — Oblea 262158015"
+  const vtvsEnHistorial = eventosAprobados
+    .filter(e => e.tipo === 'vtv')
+    .map(e => { const m = (e.titulo as string | null)?.match(/Oblea (\d+)/); return m?.[1] ?? null })
+    .filter((o): o is string => o !== null && o !== '0')
 
   const today = new Date().toISOString().split('T')[0]
   const proximasRevisiones = (eventosAprobados || [])
@@ -146,6 +154,15 @@ export default async function VehiculoDetailPage({ params }: Props) {
           </div>
         </CardContent>
       </Card>
+
+      {/* VTV Status */}
+      {vehiculo.patente && (
+        <VTVStatusCard
+          vehiculoId={id}
+          patente={vehiculo.patente}
+          vtvsEnHistorial={vtvsEnHistorial}
+        />
+      )}
 
       {/* Actions */}
       <div className="flex gap-3">

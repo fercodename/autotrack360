@@ -5,6 +5,12 @@ const config: Config = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/constants/**/*.{js,ts}',
+    './src/lib/**/*.{js,ts}',
+  ],
+  safelist: [
+    'bg-trust-oficial',
+    'text-trust-oficial',
   ],
   theme: {
     extend: {
@@ -40,6 +46,7 @@ const config: Config = {
         },
         trust: {
           high: '#10b981',
+          oficial: '#0ea5e9',
           medium: '#f59e0b',
           low: '#ef4444',
         },

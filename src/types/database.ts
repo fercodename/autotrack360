@@ -2,7 +2,7 @@ export type UserRole = 'propietario' | 'taller' | 'comprador'
 
 export type EventType = 'service' | 'reparacion' | 'vtv' | 'inspeccion' | 'otro'
 
-export type VerificationLevel = 'A' | 'B' | 'C'
+export type VerificationLevel = 'A' | 'B' | 'C' | 'O'
 
 export type EvidenceType = 'tecnica' | 'comprobante'
 

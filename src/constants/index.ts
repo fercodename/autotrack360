@@ -49,12 +49,12 @@ export const EVENT_TYPES: Record<EventType, { label: string; icon: string; color
   },
 }
 
-export const VERIFICATION_LEVELS: Record<VerificationLevel, { 
+export const VERIFICATION_LEVELS: Record<VerificationLevel, {
   label: string
   description: string
   color: string
   bgColor: string
-  weight: number 
+  weight: number
 }> = {
   A: {
     label: 'Verificado por Taller',
@@ -62,6 +62,13 @@ export const VERIFICATION_LEVELS: Record<VerificationLevel, {
     color: 'text-trust-high',
     bgColor: 'bg-trust-high',
     weight: 1.0,
+  },
+  O: {
+    label: 'Fuente Oficial',
+    description: 'Datos importados desde un organismo gubernamental verificado',
+    color: 'text-trust-oficial',
+    bgColor: 'bg-trust-oficial',
+    weight: 0.85,
   },
   B: {
     label: 'Con Evidencia',
