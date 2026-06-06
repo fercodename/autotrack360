@@ -296,7 +296,7 @@ export function VTVStatusCard({ vehiculoId, patente, vtvsEnHistorial = [] }: Pro
     <>
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         onLoad={() => setScriptLoaded(true)}
       />
       <div ref={containerRef} className="hidden" aria-hidden="true" />
@@ -329,13 +329,11 @@ export function VTVStatusCard({ vehiculoId, patente, vtvsEnHistorial = [] }: Pro
             <div className="flex items-center gap-3">
               <Button
                 onClick={handleConsultar}
-                disabled={uiState === 'token-loading' || !scriptLoaded}
+                disabled={!scriptLoaded}
                 variant="outline"
                 className="gap-2"
               >
-                {uiState === 'token-loading'
-                  ? <><Loader2 className="h-4 w-4 animate-spin" /> Inicializando…</>
-                  : <><ClipboardCheck className="h-4 w-4" /> Consultar VTV oficial</>}
+                <ClipboardCheck className="h-4 w-4" /> Consultar VTV oficial
               </Button>
             </div>
           )}
