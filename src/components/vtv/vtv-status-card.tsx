@@ -109,6 +109,9 @@ export function VTVStatusCard({ vehiculoId, patente, vtvsEnHistorial = [] }: Pro
 
   const widgetRef = useRef<string | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  // Id de consulta: al cancelar lo incrementamos para invalidar callbacks
+  // pendientes de Turnstile (evita que el panel se reabra solo).
+  const consultRef = useRef(0)
 
   // ── Turnstile ──────────────────────────────────────────────────────────────
 
@@ -122,6 +125,21 @@ export function VTVStatusCard({ vehiculoId, patente, vtvsEnHistorial = [] }: Pro
       'error-callback': () => { setToken(null); onError?.() },
       size: 'invisible',
     })
+  }
+
+  // Cierra el panel y cancela cualquier consulta en curso.
+  const closePanel = () => {
+    consultRef.current++ // invalida callbacks pendientes de la consulta anterior
+    if (widgetRef.current && window.turnstile) {
+      try { window.turnstile.remove(widgetRef.current) } catch {}
+      widgetRef.current = null
+    }
+    setToken(null)
+    setVtvData(null)
+    setErrorMsg(null)
+    setImportedCount(0)
+    setUiState('idle')
+    renderWidget() // re-arma el token en background para la próxima
   }
 
   useEffect(() => {
@@ -167,6 +185,7 @@ export function VTVStatusCard({ vehiculoId, patente, vtvsEnHistorial = [] }: Pro
   }
 
   const handleConsultar = async () => {
+    const myReq = ++consultRef.current // marca esta consulta como la activa
     if (token) {
       await doFetch(token)
       return
@@ -174,12 +193,16 @@ export function VTVStatusCard({ vehiculoId, patente, vtvsEnHistorial = [] }: Pro
     // Token no disponible: ejecutar Turnstile bajo demanda.
     // Si falla (dominio no autorizado), caer silenciosamente al modo manual.
     setUiState('fetching')
-    if (!containerRef.current || !window.turnstile) { setUiState('manual'); return }
+    if (!containerRef.current || !window.turnstile) {
+      if (consultRef.current === myReq) setUiState('manual')
+      return
+    }
     if (widgetRef.current) window.turnstile.remove(widgetRef.current)
     widgetRef.current = window.turnstile.render(containerRef.current, {
       sitekey: TURNSTILE_SITE_KEY,
-      callback: async (t: string) => { await doFetch(t) },
-      'error-callback': () => setUiState('manual'), // ← fallback silencioso
+      // Solo actuamos si esta consulta sigue siendo la activa (no se canceló)
+      callback: async (t: string) => { if (consultRef.current === myReq) await doFetch(t) },
+      'error-callback': () => { if (consultRef.current === myReq) setUiState('manual') },
       size: 'invisible',
     })
     window.turnstile.execute(widgetRef.current)
@@ -352,7 +375,7 @@ export function VTVStatusCard({ vehiculoId, patente, vtvsEnHistorial = [] }: Pro
                   Verificar manualmente en vtv.gba.gob.ar <ExternalLink className="h-3 w-3" />
                 </a>
               </div>
-              <Button variant="outline" size="sm" onClick={() => setUiState('idle')}>Reintentar</Button>
+              <Button variant="outline" size="sm" onClick={closePanel}>Reintentar</Button>
             </div>
           )}
 
@@ -363,7 +386,7 @@ export function VTVStatusCard({ vehiculoId, patente, vtvsEnHistorial = [] }: Pro
                 <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <span>{errorMsg}</span>
               </div>
-              <Button variant="outline" size="sm" onClick={() => { setUiState('idle'); setErrorMsg(null) }}>Reintentar</Button>
+              <Button variant="outline" size="sm" onClick={closePanel}>Reintentar</Button>
             </div>
           )}
 
@@ -435,7 +458,7 @@ export function VTVStatusCard({ vehiculoId, patente, vtvsEnHistorial = [] }: Pro
                 <Button onClick={handleImportarManual} disabled={!manual.fecha_vencimiento || isImporting || obleaManualDuplicada} className="gap-2">
                   <CheckCircle2 className="h-4 w-4" /> Agregar al historial
                 </Button>
-                <Button variant="outline" size="sm" onClick={() => setUiState('idle')}>Cancelar</Button>
+                <Button variant="outline" size="sm" onClick={closePanel}>Cancelar</Button>
               </div>
               <p className="text-xs text-slate-600">El evento se guardará con nivel C (declarativo) ya que los datos son ingresados manualmente.</p>
             </div>
@@ -461,7 +484,7 @@ export function VTVStatusCard({ vehiculoId, patente, vtvsEnHistorial = [] }: Pro
                   <p className="text-emerald-400/60 text-xs mt-0.5">El evento quedó registrado en la historia clínica vehicular.</p>
                 </div>
               </div>
-              <Button variant="outline" size="sm" onClick={() => { setUiState('idle'); setVtvData(null); setImportedCount(0) }}>
+              <Button variant="outline" size="sm" onClick={closePanel}>
                 Consultar de nuevo
               </Button>
             </div>
@@ -544,7 +567,7 @@ export function VTVStatusCard({ vehiculoId, patente, vtvsEnHistorial = [] }: Pro
                     ? <><Loader2 className="h-4 w-4 animate-spin" /> Guardando…</>
                     : <><CheckCircle2 className="h-4 w-4" /> Importar {selectedCount > 0 ? `${selectedCount} verificación${selectedCount > 1 ? 'es' : ''}` : ''}</>}
                 </Button>
-                <Button variant="outline" size="sm" onClick={() => { setUiState('idle'); setVtvData(null) }}>Cerrar</Button>
+                <Button variant="outline" size="sm" onClick={closePanel}>Cerrar</Button>
               </div>
             </div>
           )}
