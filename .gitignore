@@ -49,3 +49,6 @@ supabase/.temp/
 
 # Local test pages (not for production)
 src/app/vtv-test/
+
+# VTV proof-of-concept (Playwright headless test, local only)
+poc-vtv/
